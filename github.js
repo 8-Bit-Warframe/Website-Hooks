@@ -3,6 +3,7 @@ var createHandler = require('github-webhook-handler');
 var handler = createHandler({path: '/github/release', secret: '84aG0M9XcJdc1bryIDPz'});
 var GitHubApi = require('github');
 var git = require('simple-git');
+var exec = require('child_process').exec;
 
 var github = new GitHubApi({
 	Promise: require('bluebird')
