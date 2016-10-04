@@ -1,4 +1,4 @@
-var git = require('simple-git');
+var git = require('simple-git')();
 var exec = require('child_process').exec;
 
 git.checkout("master");
