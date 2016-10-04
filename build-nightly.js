@@ -1,7 +1,7 @@
 var git = require('simple-git')();
-var exec = require('child_process').exec;
+var execSync = require('child_process').execSync;
 
 git.checkout("master");
 git.pull("origin", "master");
-exec("gradle shadowJar", {cwd: '/ls-src/desktop'});
-exec("gradle createExe", {cwd: '/ls-src/desktop'});
+execSync("gradle shadowJar", {cwd: '/ls-src/desktop'});
+execSync("gradle createExe", {cwd: '/ls-src/desktop'});
