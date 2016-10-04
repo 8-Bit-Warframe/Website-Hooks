@@ -30,6 +30,7 @@ handler.on('release', function (event) {
 		git.pull("origin", "master");
 		git.checkout(res.object.sha);
 		git.submoduleUpdate();
+		exec("gradle shadowJar", {cwd: '/ls-src/desktop'});
 		exec("gradle createExe", {cwd: '/ls-src/desktop'});
 	});
 });
