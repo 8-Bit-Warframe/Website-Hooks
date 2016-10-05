@@ -3,7 +3,7 @@ var createHandler = require('github-webhook-handler');
 var handler = createHandler({path: '/github/release', secret: '84aG0M9XcJdc1bryIDPz'});
 var GitHubApi = require('github');
 var git = require('simple-git')();
-var exec = require('child_process').exec;
+var execSync = require('child_process').execSync;
 
 var github = new GitHubApi({
 	Promise: require('bluebird')
@@ -30,7 +30,7 @@ handler.on('release', function (event) {
 		git.pull("origin", "master");
 		git.checkout(res.object.sha);
 		git.submoduleUpdate();
-		exec("gradle shadowJar", {cwd: '/ls-src/desktop'});
-		exec("gradle createExe", {cwd: '/ls-src/desktop'});
+		execSync("gradle shadowJar", {cwd: '/ls-src/desktop'});
+		execSync("gradle createExe", {cwd: '/ls-src/desktop'});
 	});
 });
